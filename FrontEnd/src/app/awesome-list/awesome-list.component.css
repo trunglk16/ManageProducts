@@ -1,0 +1,10 @@
+thead {
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+table thead {
+  color: white;
+  background: red;
+}
