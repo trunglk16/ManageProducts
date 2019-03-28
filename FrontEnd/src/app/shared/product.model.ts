@@ -1,6 +1,6 @@
 export class Awesomes {
   id: number;
-  tag: string;
-  url: string;
+  name: string;
+  type: string;
   descriptions: string;
   }

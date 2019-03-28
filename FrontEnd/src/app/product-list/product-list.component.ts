@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AwesomeService} from '../service/awesome.service';
-import {Awesomes} from '../awesome.model';
+import {Awesomes} from '../shared/awesome.model';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({

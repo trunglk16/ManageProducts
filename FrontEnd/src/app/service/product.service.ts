@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Awesomes} from '../awesome.model';
+import {Awesomes} from '../shared/awesome.model';
 import {HttpClient} from '@angular/common/http';
 
 
