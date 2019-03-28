@@ -9,13 +9,17 @@ import {Product} from '../shared/product.model';
 export class ProductService {
   formData: Product;
   list: Product[];
-  private readonly API_URL = 'http://localhost:8080/products/';
+  private readonly API_URL = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
 
   postProduct(formData: Product) {
     return this.http.post(this.API_URL, formData);
+  }
+
+  getProduct(page: number) {
+    return this.http.get(this.API_URL + '/products?page=' + page);
   }
 
   refreshList() {

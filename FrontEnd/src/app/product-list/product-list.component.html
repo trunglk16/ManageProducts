@@ -1,19 +1,18 @@
 <table class="table-bordered table table-hover">
   <thead>
-    <td>Name</td>
-    <td>Type</td>
-    <td>Description</td>
-    <td></td>
+  <td>Name</td>
+  <td>Type</td>
+  <td>Description</td>
+  <td></td>
   </thead>
-  <tr *ngFor="let emp of service.list">
+  <tr *ngFor="let product of products">
 
-    <td (click)="populateForm(emp)">{{emp.name}}</td>
-    <td (click)="populateForm(emp)">{{emp.type}}</td>
-    <td (click)="populateForm(emp)">{{emp.descriptions}}</td>
+    <td (click)="populateForm(product)">{{product.name}}</td>
+    <td (click)="populateForm(product)">{{product.type}}</td>
+    <td (click)="populateForm(product)">{{product.descriptions}}</td>
     <td>
-      <button class="btn btn-sm btn-outline-danger" (click)="onDelete(emp.id)"><i class="fas fa-trash-alt"></i></button>
+      <button class="btn btn-sm btn-outline-danger" (click)="onDelete(product.id)"><i class="fas fa-trash-alt"></i></button>
     </td>
   </tr>
-
 </table>
 

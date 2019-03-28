@@ -9,14 +9,29 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
+  private page = 0;
+  private products: Array<any>;
+  private pages: Array<number>
+
+
 
   constructor(private service: ProductService,
               private toastr: ToastrService) {
   }
 
   ngOnInit() {
-    this.service.refreshList();
+    this.service.getProduct(this.page).subscribe(
+      data => {
+        this.products = data['content'];
+        this.pages = new Array(data['totalPages']);
+      },
+      (error) => {
+        console.log(error.error.message);
+      }
+    );
   }
+
+
 
   populateForm(emp: Product) {
     this.service.formData = Object.assign({}, emp);
