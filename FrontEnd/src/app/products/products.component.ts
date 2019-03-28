@@ -4,7 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {NgForm} from '@angular/forms';
 
 @Component({
-  selector: 'app-awesomes',
+  selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })

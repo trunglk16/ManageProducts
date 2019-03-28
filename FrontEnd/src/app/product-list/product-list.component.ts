@@ -4,7 +4,7 @@ import {Product} from '../shared/product.model';
 import {ToastrService} from 'ngx-toastr';
 
 @Component({
-  selector: 'app-awesome-list',
+  selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
@@ -20,6 +20,10 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getProduct();
+  }
+
+  getProduct() {
     this.service.getProduct(this.page).subscribe(
       data => {
         this.products = data['content'];
@@ -44,5 +48,11 @@ export class ProductListComponent implements OnInit {
         this.toastr.warning('Deleted successfully', 'EMP. Register');
       });
     }
+  }
+
+  setPage(i: number, $event: MouseEvent) {
+    event.preventDefault();
+    this.page = i;
+    this.getProduct();
   }
 }
