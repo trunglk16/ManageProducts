@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {AwesomeService} from '../service/awesome.service';
+import {ProductService} from '../service/product.service';
 import {ToastrService} from 'ngx-toastr';
 import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-awesomes',
-  templateUrl: './awesomes.component.html',
-  styleUrls: ['./awesomes.component.css']
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
-export class AwesomesComponent implements OnInit {
-  constructor(private service: AwesomeService,
+export class ProductsComponent implements OnInit {
+  constructor(private service: ProductService,
               private toastr: ToastrService) {
   }
 
@@ -24,9 +24,9 @@ export class AwesomesComponent implements OnInit {
     }
     this.service.formData = {
       id: null,
-      url: '',
+      name: '',
       descriptions: '',
-      tag: '',
+      type: '',
     };
   }
 
@@ -39,7 +39,7 @@ export class AwesomesComponent implements OnInit {
   }
 
   insertRecord(form: NgForm) {
-    this.service.postAwesomes(form.value).subscribe(res => {
+    this.service.postProduct(form.value).subscribe(res => {
       this.toastr.success('Inserted successfully', 'EMP. Register');
       this.resetForm(form);
       this.service.refreshList();
@@ -48,7 +48,7 @@ export class AwesomesComponent implements OnInit {
 
   updateRecord(form: NgForm) {
     if (confirm('Are you sure to do update this record')) {
-      this.service.putAwesomes(form.value).subscribe(res => {
+      this.service.putProduct(form.value).subscribe(res => {
         this.toastr.info('Updated successfully', 'EMP. Register');
         this.resetForm(form);
         this.service.refreshList();

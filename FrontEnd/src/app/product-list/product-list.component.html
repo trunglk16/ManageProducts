@@ -1,14 +1,14 @@
 <table class="table-bordered table table-hover">
   <thead>
-    <td>Tag</td>
-    <td>URL</td>
+    <td>Name</td>
+    <td>Type</td>
     <td>Description</td>
     <td></td>
   </thead>
   <tr *ngFor="let emp of service.list">
 
-    <td (click)="populateForm(emp)">{{emp.tag}}</td>
-    <td (click)="populateForm(emp)">{{emp.url}}</td>
+    <td (click)="populateForm(emp)">{{emp.name}}</td>
+    <td (click)="populateForm(emp)">{{emp.type}}</td>
     <td (click)="populateForm(emp)">{{emp.descriptions}}</td>
     <td>
       <button class="btn btn-sm btn-outline-danger" (click)="onDelete(emp.id)"><i class="fas fa-trash-alt"></i></button>

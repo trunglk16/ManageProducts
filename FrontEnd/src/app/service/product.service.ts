@@ -1,32 +1,32 @@
 import {Injectable} from '@angular/core';
-import {Awesomes} from '../shared/awesome.model';
 import {HttpClient} from '@angular/common/http';
+import {Product} from '../shared/product.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AwesomeService {
-  formData: Awesomes;
-  list: Awesomes[];
-  private readonly API_URL = 'http://localhost:3000/awesomes/';
+export class ProductService {
+  formData: Product;
+  list: Product[];
+  private readonly API_URL = 'http://localhost:8080/products/';
 
   constructor(private http: HttpClient) {
   }
 
-  postAwesomes(formData: Awesomes) {
+  postProduct(formData: Product) {
     return this.http.post(this.API_URL, formData);
   }
 
   refreshList() {
-    this.http.get(this.API_URL).toPromise().then(res => this.list = res as Awesomes[]);
+    this.http.get(this.API_URL).toPromise().then(res => this.list = res as Product[]);
   }
 
-  putAwesomes(formData: Awesomes) {
+  putProduct(formData: Product) {
     return this.http.put(this.API_URL + formData.id, formData);
   }
 
-  deleteAwesomes(id: number) {
+  deleteProduct(id: number) {
     return this.http.delete(this.API_URL + id);
   }
 }

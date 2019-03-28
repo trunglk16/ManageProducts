@@ -1,4 +1,4 @@
-export class Awesomes {
+export class Product {
   id: number;
   name: string;
   type: string;
