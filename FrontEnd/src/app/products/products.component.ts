@@ -9,6 +9,10 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  private page = 0;
+  private pages: Array<number>
+
+
   constructor(private service: ProductService,
               private toastr: ToastrService) {
   }
@@ -42,7 +46,7 @@ export class ProductsComponent implements OnInit {
     this.service.postProduct(form.value).subscribe(res => {
       this.toastr.success('Inserted successfully', 'EMP. Register');
       this.resetForm(form);
-      this.service.refreshList();
+      this.service.refreshList(this.page);
     });
   }
 
@@ -51,7 +55,7 @@ export class ProductsComponent implements OnInit {
       this.service.putProduct(form.value).subscribe(res => {
         this.toastr.info('Updated successfully', 'EMP. Register');
         this.resetForm(form);
-        this.service.refreshList();
+        this.service.refreshList(this.page);
       });
     }
   }

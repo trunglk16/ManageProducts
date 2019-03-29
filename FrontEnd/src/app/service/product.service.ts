@@ -15,15 +15,15 @@ export class ProductService {
   }
 
   postProduct(formData: Product) {
-    return this.http.post(this.API_URL, formData);
+    return this.http.post(this.API_URL + '/products', formData);
   }
 
   getProduct(page: number) {
     return this.http.get(this.API_URL + '/products?page=' + page);
   }
 
-  refreshList() {
-    this.http.get(this.API_URL).toPromise().then(res => this.list = res as Product[]);
+  refreshList(page: number) {
+    this.http.get(this.API_URL  + '/products?page=' + page).toPromise().then(res => this.list = res as Product[]);
   }
 
   putProduct(formData: Product) {

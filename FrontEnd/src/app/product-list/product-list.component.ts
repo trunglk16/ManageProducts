@@ -44,7 +44,7 @@ export class ProductListComponent implements OnInit {
   onDelete(id: number) {
     if (confirm('Are you sure to do delete this record')) {
       this.service.deleteProduct(id).subscribe(res => {
-        this.service.refreshList();
+        this.service.refreshList(this.page);
         this.toastr.warning('Deleted successfully', 'EMP. Register');
       });
     }
