@@ -10,7 +10,8 @@ import {NgForm} from '@angular/forms';
 })
 export class ProductsComponent implements OnInit {
   private page = 0;
-  private pages: Array<number>
+  private pages: Array<number>;
+  private products: Array<any>;
 
 
   constructor(private service: ProductService,
@@ -20,6 +21,7 @@ export class ProductsComponent implements OnInit {
   ngOnInit() {
     // @ts-ignore
     this.resetForm();
+    this.getProduct();
   }
 
   resetForm(form: NgForm) {
@@ -46,7 +48,7 @@ export class ProductsComponent implements OnInit {
     this.service.postProduct(form.value).subscribe(res => {
       this.toastr.success('Inserted successfully', 'EMP. Register');
       this.resetForm(form);
-      this.service.refreshList(this.page);
+      this.getProduct();
     });
   }
 
@@ -55,9 +57,22 @@ export class ProductsComponent implements OnInit {
       this.service.putProduct(form.value).subscribe(res => {
         this.toastr.info('Updated successfully', 'EMP. Register');
         this.resetForm(form);
-        this.service.refreshList(this.page);
+        this.getProduct();
       });
     }
+  }
+
+
+  getProduct() {
+    this.service.getProduct(this.page).subscribe(
+      data => {
+        this.products = data['content'];
+        this.pages = new Array(data['totalPages']);
+      },
+      (error) => {
+        console.log(error.error.message);
+      }
+    );
   }
 
 }

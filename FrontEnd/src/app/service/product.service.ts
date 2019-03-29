@@ -27,10 +27,10 @@ export class ProductService {
   }
 
   putProduct(formData: Product) {
-    return this.http.put(this.API_URL + formData.id, formData);
+    return this.http.put(this.API_URL + "/products/" + formData.id, formData);
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(this.API_URL + id);
+    return this.http.delete(this.API_URL + "/products/" + id);
   }
 }
