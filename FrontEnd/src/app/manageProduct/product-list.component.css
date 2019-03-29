@@ -8,3 +8,7 @@ table thead {
   color: white;
   background: red;
 }
+
+.row {
+  margin: 0 20%;
+}

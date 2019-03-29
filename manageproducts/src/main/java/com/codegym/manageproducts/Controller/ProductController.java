@@ -41,10 +41,11 @@ public class ProductController {
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
         product.setId(productDetail.getId());
         product.setDescriptions(productDetail.getDescriptions());
-        product.setName(productDetail.getDescriptions());
+        product.setName(productDetail.getName());
         product.setType(productDetail.getType());
         Product updateProduct = productRepository.save(product);
         return updateProduct;
     }
+
 
 }

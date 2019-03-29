@@ -1,0 +1,79 @@
+<div class="row container">
+
+  <div class="col-md-5">
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="onSubmit(form)">
+      <div type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id"></div>
+      <div class="form-group">
+        <label>Name</label>
+        <input name="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" required>
+        <div class="validation-error" *ngIf="name.invalid && name.touched">This field is required.</div>
+      </div>
+
+      <div class="form-group">
+
+        <select name="type" [(ngModel)]="service.formData.type">
+          <option>None</option>
+          <option value="Food">Food</option>
+          <option value="Clothe">Clothe</option>
+          <option value="Mobile">Mobile</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input name="descriptions" #descriptions="ngModel" [(ngModel)]="service.formData.descriptions"
+               class="form-control" required>
+        <div class="validation-error" *ngIf="descriptions.invalid && descriptions.touched">This field is required.</div>
+      </div>
+
+      <div class="form-group">
+        <button routerLink="#" type="submit" class="btn btn-lg btn-primary" [disabled]="form.invalid">SUBMIT</button>
+      </div>
+    </form>
+
+  </div>
+
+  <div class="col-md-7">
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <input type="text" #productName placeholder="Insert name of product you want to find here">
+          <button (click)="findProduct()">Find</button>
+          <ul class="nav nav-pills">
+
+
+            <li class="nav-item" *ngFor="let p of pages; let i=index">
+              <a href="" class="nav-link " (click)="setPage(i,$event)"
+                 [ngClass]="{'active':i==page}"
+              >{{i + 1}}</a>
+            </li>
+          </ul>
+          <table class="table-bordered table table-hover">
+            <thead>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Description</td>
+            <td></td>
+            </thead>
+            <tr *ngFor="let product of products; let index = index">
+              <td (click)="populateForm(product)">{{product.name}}</td>
+              <td (click)="populateForm(product)">{{product.type}}</td>
+              <td (click)="populateForm(product)">{{product.descriptions}}</td>
+              <td>
+                <button class="btn btn-sm btn-outline-danger" (click)="onDelete(product.id)"><i
+                  class="fas fa-trash-alt"></i></button>
+              </td>
+            </tr>
+          </table>
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
